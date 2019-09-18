@@ -1,7 +1,7 @@
 from prometheus_client import start_http_server, Summary, Counter, Histogram, Gauge, MetricsHandler
 import random
 import time
-
+## https://wp.huangshiyang.com/prometheus-python-client-sample-server
 # Create a metric to track time spent and requests made.
 REQUEST_TIME = Summary('request_processing_seconds', 'Time spent processing request')
 _INF = float("inf")

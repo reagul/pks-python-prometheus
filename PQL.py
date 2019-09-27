@@ -23,7 +23,7 @@ def mainloop():
         results = json.loads(response.text)
         ###{u'status': u'success', u'data': {u'resultType': u'vector', u'result': [{u'metric': {}, u'value': [1569619322.177, u'0.6342261002060954']}]}}
         # 1. Test if response body contains sth.
-        if results.text:
+        if results:
             # ...
             print("response text entered ")
         # 2. Handle error if deserialization fails (because of no text or bad format)

@@ -5,6 +5,13 @@ import json
 
 PROMETHEUS = 'http://prometheus.my-clusterapps.corp.local/'
 
+'''
+d = """{"Aa": 1, "BB": "blabla", "cc": "False"}"""
+
+d1 = json.loads(d)              # Produces a dictionary out of the given string
+d2 = json.dumps(d)              # Produces a string out of a given dict or string
+d3 = json.dumps(json.loads(d))  # 'dumps' gets the dict from 'loads' this time
+'''
 
 def mainloop():
 
@@ -13,11 +20,14 @@ def mainloop():
         response = requests.get(PROMETHEUS + '/api/v1/query',
         params={ 'query': '1 - avg(rate(node_cpu_seconds_total{mode="idle"}[1m]))'})
         print("#####")
-        print(response.text)
+        ### {"status":"success","data":{"resultType":"vector","result":[{"metric":{},"value":[1569619322.177,"0.6342261002060954"]}]}}
+        print(response.text.json())
         print("##########")
         ##results = response.json()
         results = json.loads(response.text)
+        ###{u'status': u'success', u'data': {u'resultType': u'vector', u'result': [{u'metric': {}, u'value': [1569619322.177, u'0.6342261002060954']}]}}
         print (results)
+        print(results.keys())
         print("!!!!!!!!!!")
         currentDT = datetime.datetime.now()
         print ("Current Second is: %d" % currentDT.second)

@@ -34,7 +34,7 @@ def mainloop():
             print("EPRINTEF" + str(e))
             print("waiting 10 secs")
             time.sleep(10)
-            continue
+
         else:
 
             print("^^^^^^^^^")

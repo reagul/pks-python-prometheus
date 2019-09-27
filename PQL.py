@@ -29,7 +29,10 @@ def mainloop():
         print("^^^^^^^^^")
         cpuutil = results['data']
         print(cpuutil.keys())
-        print("@@@@@@@@@")
+        #[u'resultType', u'result']
+        cpumetric = cpuutil['result']['value']
+        print("FFFF" + cpumetric)
+        print("$$$$")
         currentDT = datetime.datetime.now()
         print ("Current Second is: %d" % currentDT.second)
         time.sleep(3)

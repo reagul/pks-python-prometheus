@@ -27,7 +27,7 @@ def mainloop():
         print(results.keys())
         ##[u'status', u'data']
         print("^^^^^^^^^")
-        cpuutil = json.loads(results['data'])
+        cpuutil = results['data']
         print(cpuutil.keys())
         print("@@@@@@@@@")
         currentDT = datetime.datetime.now()

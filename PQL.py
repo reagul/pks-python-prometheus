@@ -30,8 +30,8 @@ def mainloop():
         cpuutil = results['data']
         print(cpuutil.keys())
         #[u'resultType', u'result']
-        cpumetric = cpuutil['result']['value']
-        print("FFFF" + str(cpumetric))
+        cpumetric = cpuutil['result']
+        print("FFFF" + str(cpumetric[1])
         print("$$$$")
         currentDT = datetime.datetime.now()
         print ("Current Second is: %d" % currentDT.second)

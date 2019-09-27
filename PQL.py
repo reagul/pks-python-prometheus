@@ -22,7 +22,7 @@ def mainloop():
         ### {"status":"success","data":{"resultType":"vector","result":[{"metric":{},"value":[1569619322.177,"0.6342261002060954"]}]}}
 
         ###{u'status': u'success', u'data': {u'resultType': u'vector', u'result': [{u'metric': {}, u'value': [1569619322.177, u'0.6342261002060954']}]}}
-    
+
         try:
             ##responses = response.json()
             results = json.loads(response.text)
@@ -30,7 +30,7 @@ def mainloop():
             # ...
         except ValueError, e:
             # no JSON returned
-            print("EPRINTEF" + e)
+            print("EPRINTEF" + str(e))
             print("waiting 10 secs")
             time.sleep(10)
             continue

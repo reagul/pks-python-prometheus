@@ -32,7 +32,7 @@ def mainloop():
         #[u'resultType', u'result']
         cpumetric = cpuutil['result']
         print("$$$$")
-        cpuavg =  json.loads(cpumetric[0])))
+        cpuavg =  json.loads(cpumetric[0])
         print("rrr=" + cpuavg['value'])
         print("$$$$")
         currentDT = datetime.datetime.now()

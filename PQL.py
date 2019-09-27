@@ -1,6 +1,6 @@
 import time
 import requests  # Install this if you don't have it already.
-
+import datetime
 
 PROMETHEUS = 'http://prometheus.my-clusterapps.corp.local/'
 

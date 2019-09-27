@@ -32,7 +32,8 @@ def mainloop():
         #[u'resultType', u'result']
         cpumetric = cpuutil['result']
         print("$$$$")
-        print(str(cpumetric[0]))
+        cpuavg =  json.loads(cpumetric[0])))
+        print("rrr=" + cpuavg['value'])
         print("$$$$")
         currentDT = datetime.datetime.now()
         print ("Current Second is: %d" % currentDT.second)

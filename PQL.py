@@ -26,7 +26,7 @@ def mainloop():
         print("^^^^^^^^^")
         print(results.keys())
         print("^^^^^^^^^")
-        cpuutil = json.loads(results['data'])
+        cpuutil = json.loads(results['data'].text)
         print(cpuutil.keys())
         print("@@@@@@@@@")
         currentDT = datetime.datetime.now()

@@ -23,8 +23,9 @@ def mainloop():
 
         ###{u'status': u'success', u'data': {u'resultType': u'vector', u'result': [{u'metric': {}, u'value': [1569619322.177, u'0.6342261002060954']}]}}
 
-        try:
+        try responses:
             ##responses = response.json()
+            print("STATUS:" + response.status)
             results = json.loads(response.text)
             metricdict = results['data']
             # ...

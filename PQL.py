@@ -3,10 +3,11 @@ import requests  # Install this if you don't have it already.
 import datetime
 
 PROMETHEUS = 'http://prometheus.my-clusterapps.corp.local/'
+currentDT = datetime.datetime.now()
 
 def mainloop():
 # Midnight at the end of the previous month.
-    currentDT = datetime.datetime.now()
+
     end_of_month = datetime.datetime.today().replace(day=1).date()
     # Last day of the previous month.
     last_day = end_of_month - datetime.timedelta(days=1)

@@ -33,7 +33,7 @@ def mainloop():
         cpumetric = cpuutil['result']
         ##{u'metric': {}, u'value': [1569622615.046, u'0.6176136522020318']}
         print("$$$$")
-        cpuavg =  cpumetric[1]
+        cpuavg =  cpumetric[0]
         print("rrr=" + cpuavg)
         print("$$$$")
         currentDT = datetime.datetime.now()

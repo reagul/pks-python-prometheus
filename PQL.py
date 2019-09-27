@@ -22,7 +22,7 @@ def mainloop():
         ### {"status":"success","data":{"resultType":"vector","result":[{"metric":{},"value":[1569619322.177,"0.6342261002060954"]}]}}
 
         ###{u'status': u'success', u'data': {u'resultType': u'vector', u'result': [{u'metric': {}, u'value': [1569619322.177, u'0.6342261002060954']}]}}
-
+        time.sleep(3)
         try:
             ##responses = response.json()
             print("STATUS:" + str(response.status_code))
@@ -52,6 +52,7 @@ def mainloop():
                 cpuavg =  cpumetric[0]
                 print("rrr=" + str(cpuavg['value']))
             except IndexError:
+                time.sleep(3)
                 pass
             continue
                 ##rrr=[1569623191.881, u'0.6377711405523562']
@@ -60,6 +61,6 @@ def mainloop():
             ## $$$$==0.689901996444132
             currentDT = datetime.datetime.now()
             print ("Current Second is: %d" % currentDT.second)
-            time.sleep(3)
+
 if __name__== "__main__":
     mainloop()

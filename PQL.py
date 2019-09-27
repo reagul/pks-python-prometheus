@@ -25,7 +25,7 @@ def mainloop():
 
         try:
             ##responses = response.json()
-            print("STATUS:" + response.status_code)
+            print("STATUS:" + str(response.status_code))
             results = json.loads(response.text)
             metricdict = results['data']
             # ...

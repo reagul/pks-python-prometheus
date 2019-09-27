@@ -20,22 +20,20 @@ def mainloop():
         response = requests.get(PROMETHEUS + '/api/v1/query',
         params={ 'query': '1 - avg(rate(node_cpu_seconds_total{mode="idle"}[1m]))'})
         ### {"status":"success","data":{"resultType":"vector","result":[{"metric":{},"value":[1569619322.177,"0.6342261002060954"]}]}}
-        results = json.loads(response.text)
+
         ###{u'status': u'success', u'data': {u'resultType': u'vector', u'result': [{u'metric': {}, u'value': [1569619322.177, u'0.6342261002060954']}]}}
-        # 1. Test if response body contains sth.
-        if results:
-            # ...
-            print("response text entered ")
-        # 2. Handle error if deserialization fails (because of no text or bad format)
+    
         try:
             ##responses = response.json()
+            results = json.loads(response.text)
             metricdict = results['data']
             # ...
-        except ValueError:
+        except ValueError, e:
             # no JSON returned
-            print("no JASON returned")
+            print("EPRINTEF" + e)
             print("waiting 10 secs")
             time.sleep(10)
+            continue
         else:
 
             print("^^^^^^^^^")

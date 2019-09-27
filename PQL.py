@@ -34,10 +34,10 @@ def mainloop():
         except ValueError:
             # no JSON returned
             print("no JASON returned")
-
-        finally:
             print("waiting 10 secs")
             time.sleep(10)
+        else:
+
             print("^^^^^^^^^")
             print(results.keys())
             ##[u'status', u'data']

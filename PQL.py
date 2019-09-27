@@ -34,7 +34,7 @@ def mainloop():
         ##{u'metric': {}, u'value': [1569622615.046, u'0.6176136522020318']}
         print("$$$$")
         cpuavg =  cpumetric[0]
-        print("rrr=" + cpuavg)
+        print("rrr=" + str(cpuavg['value']))
         print("$$$$")
         currentDT = datetime.datetime.now()
         print ("Current Second is: %d" % currentDT.second)

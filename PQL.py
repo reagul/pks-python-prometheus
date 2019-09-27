@@ -13,7 +13,7 @@ def mainloop():
         response = requests.get(PROMETHEUS + '/api/v1/query',
         params={ 'query': '1 - avg(rate(node_cpu_seconds_total{mode="idle"}[1m]))'})
         ##results = response.json()
-        results = json.dumps(response)
+        results = json.loads(response.text)
         print (results)
         currentDT = datetime.datetime.now()
         print ("Current Second is: %d" % currentDT.second)

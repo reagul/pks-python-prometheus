@@ -25,8 +25,9 @@ def mainloop():
         ###{u'status': u'success', u'data': {u'resultType': u'vector', u'result': [{u'metric': {}, u'value': [1569619322.177, u'0.6342261002060954']}]}}
         print("^^^^^^^^^")
         print(results.keys())
+        ##[u'status', u'data']
         print("^^^^^^^^^")
-        cpuutil = json.loads(results['data'].text)
+        cpuutil = json.loads(results.key('data'))
         print(cpuutil.keys())
         print("@@@@@@@@@")
         currentDT = datetime.datetime.now()

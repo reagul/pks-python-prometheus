@@ -27,15 +27,17 @@ def mainloop():
         print(results.keys())
         ##[u'status', u'data']
         print("^^^^^^^^^")
-        cpuutil = results['data']
-        print(cpuutil.keys())
+        metricdict = results['data']
+        print(metricdict.keys())
         #[u'resultType', u'result']
-        cpumetric = cpuutil['result']
+        cpumetric = metricdict['result']
         ##{u'metric': {}, u'value': [1569622615.046, u'0.6176136522020318']}
         print("$$$$")
         cpuavg =  cpumetric[0]
         print("rrr=" + str(cpuavg['value']))
-        print("$$$$")
+        ##rrr=[1569623191.881, u'0.6377711405523562']
+        cpuutil = cpuavg['value'].[1]
+        print("$$$$==" + str(cpuutil))
         currentDT = datetime.datetime.now()
         print ("Current Second is: %d" % currentDT.second)
         time.sleep(3)

@@ -36,7 +36,7 @@ def mainloop():
         cpuavg =  cpumetric[0]
         print("rrr=" + str(cpuavg['value']))
         ##rrr=[1569623191.881, u'0.6377711405523562']
-        cpuutil = cpuavg['value'].[1]
+        cpuutil = cpuavg['value'][1]
         print("$$$$==" + str(cpuutil))
         currentDT = datetime.datetime.now()
         print ("Current Second is: %d" % currentDT.second)

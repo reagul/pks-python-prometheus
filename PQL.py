@@ -19,9 +19,9 @@ def mainloop():
     #'query': 'sum by (job)(increase(process_cpu_seconds_total' + duration + '))',
         response = requests.get(PROMETHEUS + '/api/v1/query',
         params={ 'query': '1 - avg(rate(node_cpu_seconds_total{mode="idle"}[1m]))'})
-        print("#####")
+
         ### {"status":"success","data":{"resultType":"vector","result":[{"metric":{},"value":[1569619322.177,"0.6342261002060954"]}]}}
-        print(response.text.json())
+        ##print(response.text.json())
         print("##########")
         ##results = response.json()
         results = json.loads(response.text)

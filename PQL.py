@@ -19,27 +19,41 @@ def mainloop():
     #'query': 'sum by (job)(increase(process_cpu_seconds_total' + duration + '))',
         response = requests.get(PROMETHEUS + '/api/v1/query',
         params={ 'query': '1 - avg(rate(node_cpu_seconds_total{mode="idle"}[1m]))'})
-
         ### {"status":"success","data":{"resultType":"vector","result":[{"metric":{},"value":[1569619322.177,"0.6342261002060954"]}]}}
         results = json.loads(response.text)
         ###{u'status': u'success', u'data': {u'resultType': u'vector', u'result': [{u'metric': {}, u'value': [1569619322.177, u'0.6342261002060954']}]}}
-        print("^^^^^^^^^")
-        print(results.keys())
-        ##[u'status', u'data']
-        print("^^^^^^^^^")
-        metricdict = results['data']
-        print(metricdict.keys())
-        #[u'resultType', u'result']
-        cpumetric = metricdict['result']
-        ##{u'metric': {}, u'value': [1569622615.046, u'0.6176136522020318']}
-        print("$$$$")
-        cpuavg =  cpumetric[0]
-        print("rrr=" + str(cpuavg['value']))
-        ##rrr=[1569623191.881, u'0.6377711405523562']
-        cpuutil = cpuavg['value'][1]
-        print("$$$$==" + str(cpuutil))
-        currentDT = datetime.datetime.now()
-        print ("Current Second is: %d" % currentDT.second)
+        # 1. Test if response body contains sth.
+        if results.text:
+            # ...
+            print("response text entered ")
+        # 2. Handle error if deserialization fails (because of no text or bad format)
+        try:
+            ##responses = response.json()
+            metricdict = results['data']
+            # ...
+        except ValueError:
+            # no JSON returned
+            print("no JASON returned")
+
+        else:
+            print("^^^^^^^^^")
+            print(results.keys())
+            ##[u'status', u'data']
+            print("^^^^^^^^^")
+            ## ..///metricdict = results['data']
+            print(metricdict.keys())
+            #[u'resultType', u'result']
+            cpumetric = metricdict['result']
+            ##{u'metric': {}, u'value': [1569622615.046, u'0.6176136522020318']}
+            print("$$$$")
+            cpuavg =  cpumetric[0]
+            print("rrr=" + str(cpuavg['value']))
+            ##rrr=[1569623191.881, u'0.6377711405523562']
+            cpuutil = cpuavg['value'][1]
+            print("$$$$==" + str(cpuutil))
+            ## $$$$==0.689901996444132
+            currentDT = datetime.datetime.now()
+            print ("Current Second is: %d" % currentDT.second)
         time.sleep(3)
 if __name__== "__main__":
     mainloop()

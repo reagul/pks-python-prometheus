@@ -1,6 +1,7 @@
 import time
 import requests  # Install this if you don't have it already.
 import datetime
+import json
 
 PROMETHEUS = 'http://prometheus.my-clusterapps.corp.local/'
 
@@ -11,7 +12,8 @@ def mainloop():
     #'query': 'sum by (job)(increase(process_cpu_seconds_total' + duration + '))',
         response = requests.get(PROMETHEUS + '/api/v1/query',
         params={ 'query': '1 - avg(rate(node_cpu_seconds_total{mode="idle"}[1m]))'})
-        results = response.json()
+        ##results = response.json()
+        results = json.dumps(response)
         print (results)
         currentDT = datetime.datetime.now()
         print ("Current Second is: %d" % currentDT.second)

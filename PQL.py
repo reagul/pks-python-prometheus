@@ -48,11 +48,15 @@ def mainloop():
             cpumetric = metricdict['result']
             ##{u'metric': {}, u'value': [1569622615.046, u'0.6176136522020318']}
             print("$$$$")
-            cpuavg =  cpumetric[0]
-            print("rrr=" + str(cpuavg['value']))
-            ##rrr=[1569623191.881, u'0.6377711405523562']
+            try:
+                cpuavg =  cpumetric[0]
+                print("rrr=" + str(cpuavg['value']))
+            except IndexError:
+                pass
+            continue
+                ##rrr=[1569623191.881, u'0.6377711405523562']
             cpuutil = cpuavg['value'][1]
-            print("$$$$==" + str(cpuutil))
+                print("$$$$==" + str(cpuutil))
             ## $$$$==0.689901996444132
             currentDT = datetime.datetime.now()
             print ("Current Second is: %d" % currentDT.second)

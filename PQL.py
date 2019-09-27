@@ -31,6 +31,7 @@ def mainloop():
         print(cpuutil.keys())
         #[u'resultType', u'result']
         cpumetric = cpuutil['result']
+        print("$$$$")
         print(str(cpumetric[0]))
         print("$$$$")
         currentDT = datetime.datetime.now()

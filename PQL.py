@@ -35,7 +35,9 @@ def mainloop():
             # no JSON returned
             print("no JASON returned")
 
-        else:
+        finally:
+            print("waiting 10 secs")
+            time.sleep(10)
             print("^^^^^^^^^")
             print(results.keys())
             ##[u'status', u'data']

@@ -60,6 +60,6 @@ def mainloop():
             ## $$$$==0.689901996444132
             currentDT = datetime.datetime.now()
             print ("Current Second is: %d" % currentDT.second)
-        time.sleep(3)
+            time.sleep(3)
 if __name__== "__main__":
     mainloop()

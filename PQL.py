@@ -48,7 +48,7 @@ def mainloop():
                 cpuutil = cpuavg['value'][1]
 
                 print("$$$$==" + str(cpuutil))
-                print(int(cpuutil) * 100)
+                print(float(cpuutil) * 100)
             except IndexError:
                 print("ERROR2: waiting 15 secs")
                 time.sleep(15)

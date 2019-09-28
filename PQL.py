@@ -32,22 +32,21 @@ def mainloop():
         except ValueError, e:
             # no JSON returned
             print("EPRINTEF" + str(e))
-            print("waiting 10 secs")
+            print("ERROR1: waiting 10 secs")
             time.sleep(10)
             pass
 
         else:
 
-            print("^^^^^^^^^")
-            print(results.keys())
+            #print("^^^^^^^^^")
+            #print(results.keys())
             ##[u'status', u'data']
-            print("^^^^^^^^^")
+            #print("^^^^^^^^^")
             ## ..///metricdict = results['data']
-            print(metricdict.keys())
+            #print(metricdict.keys())
             #[u'resultType', u'result']
             cpumetric = metricdict['result']
             ##{u'metric': {}, u'value': [1569622615.046, u'0.6176136522020318']}
-            print("$$$$")
             try:
                 cpuavg =  cpumetric[0]
                 ##rrr=[1569623191.881, u'0.6377711405523562']
@@ -55,7 +54,8 @@ def mainloop():
                 cpuutil = cpuavg['value'][1]
                 print("$$$$==" + str(cpuutil))
             except IndexError:
-                time.sleep(3)
+                print("ERROR2: waiting 10 secs")
+                time.sleep(10)
                 pass
             else:
             ## $$$$==0.689901996444132

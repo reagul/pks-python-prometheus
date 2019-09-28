@@ -48,8 +48,8 @@ def mainloop():
                 cpuutil = cpuavg['value'][1]
 
                 print("$$$$==" + str(cpuutil))
-                cpupercent = float(cpuutil) * 100
-                print("Formatted: "+"{:.2%}".format(cpuutil));
+                cpupercent = float(cpuutil)
+                print("Formatted: "+"{:.2%}".format(cpupercent));
             except IndexError:
                 print("ERROR2: waiting 15 secs")
                 time.sleep(15)

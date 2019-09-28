@@ -2,7 +2,6 @@ import time
 import requests  # Install this if you don't have it already.
 import datetime
 import json
-from decimal import Decimal
 
 PROMETHEUS = 'http://prometheus.my-clusterapps.corp.local/'
 
@@ -49,8 +48,8 @@ def mainloop():
                 cpuutil = cpuavg['value'][1]
 
                 print("$$$$==" + str(cpuutil))
-                cpupercent = Decimal(float(cpuutil))
-                print(cpupercent)
+                cpupercent = (float(cpuutil))
+                print(int(cpupercent))
 
             except IndexError:
                 print("ERROR2: waiting 15 secs")

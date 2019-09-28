@@ -53,12 +53,11 @@ def mainloop():
                 ##rrr=[1569623191.881, u'0.6377711405523562']
                 print("rrr=" + str(cpuavg['value']))
                 cpuutil = cpuavg['value'][1]
+                print("$$$$==" + str(cpuutil))
             except IndexError:
                 time.sleep(3)
                 pass
             else:
-
-            print("$$$$==" + str(cpuutil))
             ## $$$$==0.689901996444132
             currentDT = datetime.datetime.now()
             print ("Current Second is: %d" % currentDT.second)

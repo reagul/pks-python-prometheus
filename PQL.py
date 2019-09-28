@@ -49,7 +49,7 @@ def mainloop():
 
                 print("$$$$==" + str(cpuutil))
                 cpupercent = float(cpuutil)
-                print("Formatted: "+"{:.2%}".format(cpupercent));
+                print("Formatted: "+"{1:.2%}".format(cpupercent));
             except IndexError:
                 print("ERROR2: waiting 15 secs")
                 time.sleep(15)

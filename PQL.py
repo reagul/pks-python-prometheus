@@ -55,8 +55,8 @@ def mainloop():
                 cpuutil = cpuavg['value'][1]
                 print("$$$$==" + str(cpuutil))
             except IndexError:
-                print("ERROR2: waiting 10 secs")
-                time.sleep(10)
+                print("ERROR2: waiting 15 secs")
+                time.sleep(15)
                 pass
             else:
             ## $$$$==0.689901996444132

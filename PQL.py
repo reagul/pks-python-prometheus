@@ -61,6 +61,7 @@ def mainloop():
                     time.sleep(300)
             except IndexError:
                 print("ERROR2: waiting 15 secs")
+                metricserver()
                 time.sleep(15)
                 pass
             else:

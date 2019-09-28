@@ -2,6 +2,7 @@ import time
 import requests  # Install this if you don't have it already.
 import datetime
 import json
+import subprocess
 
 PROMETHEUS = 'http://prometheus.my-clusterapps.corp.local/'
 

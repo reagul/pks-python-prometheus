@@ -5,13 +5,6 @@ import json
 
 PROMETHEUS = 'http://prometheus.my-clusterapps.corp.local/'
 
-'''
-d = """{"Aa": 1, "BB": "blabla", "cc": "False"}"""
-
-d1 = json.loads(d)              # Produces a dictionary out of the given string
-d2 = json.dumps(d)              # Produces a string out of a given dict or string
-d3 = json.dumps(json.loads(d))  # 'dumps' gets the dict from 'loads' this time
-'''
 
 def mainloop():
 
@@ -32,9 +25,9 @@ def mainloop():
             # ...
         except ValueError, e:
             # no JSON returned
-            print("EPRINTEF" + str(e))
-            print("ERROR1: waiting 10 secs")
-            time.sleep(10)
+            print("EPRINTEF:" + str(e))
+            print("ERROR1: waiting 20 secs")
+            time.sleep(20)
             pass
 
         else:

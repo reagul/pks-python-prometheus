@@ -59,8 +59,8 @@ def mainloop():
                 pass
             else:
             ## $$$$==0.689901996444132
-            currentDT = datetime.datetime.now()
-            print ("Current Second is: %d" % currentDT.second)
+                currentDT = datetime.datetime.now()
+                print ("Current Second is: %d" % currentDT.second)
 
 if __name__== "__main__":
     mainloop()

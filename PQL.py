@@ -49,7 +49,7 @@ def mainloop():
 
                 print("$$$$==" + str(cpuutil))
                 cpupercent = (float(cpuutil))
-                print(int(round(cpupercent,2)))
+                print(int(round(cpupercent,2) * 100))
 
             except IndexError:
                 print("ERROR2: waiting 15 secs")

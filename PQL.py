@@ -49,8 +49,11 @@ def mainloop():
 
                 print("$$$$==" + str(cpuutil))
                 cpupercent = (float(cpuutil))
-                print(int(round(cpupercent,2) * 100))
-
+                cpufinal = int(round(cpupercent,2) * 100)
+                if cpufinal > 75 :
+                    print("kickoff node creation")
+                    print("sleep for 5 mins")
+                    time.sleep(300)
             except IndexError:
                 print("ERROR2: waiting 15 secs")
                 time.sleep(15)

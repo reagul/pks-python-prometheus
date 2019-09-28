@@ -30,6 +30,7 @@ def mainloop():
             print("EPRINTEF:" + str(e))
             print("ERROR1: fetching METRIC_SERVER ..wait 20s")
             ## fall to secondary metric from METRIC_SERVER
+            time.sleep(10)
             metricserver()
             time.sleep(20)
             pass

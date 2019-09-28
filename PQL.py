@@ -46,8 +46,9 @@ def mainloop():
                 ##rrr=[1569623191.881, u'0.6377711405523562']
                 #print("rrr=" + str(cpuavg['value']))
                 cpuutil = cpuavg['value'][1]
+
                 print("$$$$==" + str(cpuutil))
-                print (format(cpuutil * 100))
+                print(int(cpuutil) * 100)
             except IndexError:
                 print("ERROR2: waiting 15 secs")
                 time.sleep(15)

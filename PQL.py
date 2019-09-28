@@ -50,13 +50,14 @@ def mainloop():
             print("$$$$")
             try:
                 cpuavg =  cpumetric[0]
+                ##rrr=[1569623191.881, u'0.6377711405523562']
                 print("rrr=" + str(cpuavg['value']))
+                cpuutil = cpuavg['value'][1]
             except IndexError:
                 time.sleep(3)
                 pass
-            continue
-                ##rrr=[1569623191.881, u'0.6377711405523562']
-            cpuutil = cpuavg['value'][1]
+            else:
+
             print("$$$$==" + str(cpuutil))
             ## $$$$==0.689901996444132
             currentDT = datetime.datetime.now()

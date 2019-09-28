@@ -16,6 +16,7 @@ def mainloop():
 
         ###{u'status': u'success', u'data': {u'resultType': u'vector', u'result': [{u'metric': {}, u'value': [1569619322.177, u'0.6342261002060954']}]}}
         time.sleep(3)
+        ## http://prometheus.my-clusterapps.corp.local/api/v1/query?query=1%20-%20avg(rate(node_cpu_seconds_total{mode=%22idle%22}[1m]))
         try:
             ##responses = response.json()
             print("^^^^^^^^^")
@@ -25,8 +26,11 @@ def mainloop():
             # ...
         except ValueError, e:
             # no JSON returned
+            ## possible 502 error
             print("EPRINTEF:" + str(e))
-            print("ERROR1: waiting 20 secs")
+            print("ERROR1: fetching METRIC_SERVER ..wait 20s")
+            ## fall to secondary metric from METRIC_SERVER
+            metricserver()
             time.sleep(20)
             pass
 
@@ -62,6 +66,19 @@ def mainloop():
             ## $$$$==0.689901996444132
                 currentDT = datetime.datetime.now()
                 print ("Current Second is: %d" % currentDT.second)
+
+def metricserver():
+
+    args = ("pks","login","-a","pks.corp.local","-u","pksadmin","-k","-p","VMware1!")
+    try:
+
+        popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+        popen.wait()
+        output = popen.stdout.read()
+        ##print output
+    except subprocess.CalledProcessError:
+        print("Error Occured" + output)
+
 
 if __name__== "__main__":
     mainloop()

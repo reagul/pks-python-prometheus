@@ -25,6 +25,7 @@ def mainloop():
         time.sleep(3)
         try:
             ##responses = response.json()
+            print("^^^^^^^^^")
             print("STATUS:" + str(response.status_code))
             results = json.loads(response.text)
             metricdict = results['data']
@@ -50,7 +51,7 @@ def mainloop():
             try:
                 cpuavg =  cpumetric[0]
                 ##rrr=[1569623191.881, u'0.6377711405523562']
-                print("rrr=" + str(cpuavg['value']))
+                #print("rrr=" + str(cpuavg['value']))
                 cpuutil = cpuavg['value'][1]
                 print("$$$$==" + str(cpuutil))
             except IndexError:

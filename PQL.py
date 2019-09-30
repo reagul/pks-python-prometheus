@@ -3,6 +3,7 @@ import requests  # Install this if you don't have it already.
 import datetime
 import json
 import subprocess
+from subprocess import Popen,PIPE
 
 PROMETHEUS = 'http://prometheus.my-clusterapps.corp.local/'
 
@@ -83,8 +84,8 @@ def pksnodecreate():
     args = ("pks","resize","my-cluster","--num-nodes","1")
 
     try:
-
-        popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+        ## foo_proc = Popen(['ionic', 'cordova', 'prepare'], stdin=PIPE, stdout=PIPE)
+        popen = Popen(args, stdin=PIPE, stdout=PIPE, shell=True)
         popen.wait()
         output = popen.stdout.read()
         popen.communicate(input='y')

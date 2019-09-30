@@ -55,6 +55,7 @@ def mainloop():
                     print("kickoff node creation")
                     print("sleep for 10 mins")
                     workernodes = pksnodecreate(3)
+                    print("WORKERnodes = :" + str(workernodes))
                     time.sleep(600)
             except IndexError:
                 print("INDEXERROR: waiting 20 secs")

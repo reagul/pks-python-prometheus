@@ -90,7 +90,7 @@ def pksnodecreate():
         #print(clusternodes)
         #re.split('[-:]', a)
         for items in clusternodes:
-            print(items)
+            print("tdd" + items)
         #parts = re.split(':', clusternodes)
         #print(parts)
 

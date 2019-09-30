@@ -6,6 +6,6 @@ popen = subprocess.Popen(args, stdout=subprocess.PIPE)
 popen.wait()
 output, err = popen.communicate()
 exitcode = popen.returncode
-print err
-print output
-print exitcode
+print ("err" + err )
+print ("out" + output)
+print ("exitcode" + exitcode)

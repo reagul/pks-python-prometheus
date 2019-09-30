@@ -5,6 +5,7 @@ import json
 import subprocess
 import shlex
 import re
+import operator
 from subprocess import Popen,PIPE
 
 PROMETHEUS = 'http://prometheus.my-clusterapps.corp.local/'
@@ -91,6 +92,9 @@ def pksnodecreate():
         #re.split('[-:]', a)
         for items in clusternodes:
             print("tdd" + items)
+        print(len(clusternodes))
+        one,four,nine=operator.itemgetter(1,4,9)(clusternodes)
+        print(one,four,nine)
         #parts = re.split(':', clusternodes)
         #print(parts)
 

@@ -3,6 +3,7 @@ import requests  # Install this if you don't have it already.
 import datetime
 import json
 import subprocess
+import shlex
 from subprocess import Popen,PIPE
 
 PROMETHEUS = 'http://prometheus.my-clusterapps.corp.local/'
@@ -86,12 +87,12 @@ def pksnodecreate():
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
 
-    args = ("pks","resize","my-cluster","--num-nodes=4","--non-interactive")
+    nodeargs = ("pks","resize","my-cluster","--num-nodes=4","--non-interactive")
 
     try:
         ## foo_proc = Popen(['ionic', 'cordova', 'prepare'], stdin=PIPE, stdout=PIPE)
-        print("COMMAND ISSUED " + str(args))
-        popen = Popen(args, stdin=PIPE, stdout=PIPE, shell=True)
+        print("COMMAND ISSUED " + str(nodeargs))
+        popen = Popen(nodeargs, stdin=PIPE, stdout=PIPE, shell=True)
         popen.wait()
         output = popen.stdout.read()
         print("SHELL Output after create" + str(output))

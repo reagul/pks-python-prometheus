@@ -72,6 +72,9 @@ def mainloop():
 
 def pksnodecreate():
 
+
+   ## REad the current nodes and append by 1
+
     args = ("pks","login","-a","pks.corp.local","-u","pksadmin","-k","-p","VMware1!")
     try:
 
@@ -91,6 +94,8 @@ def pksnodecreate():
         popen.wait()
         output = popen.stdout.read()
         popen.communicate(input='y')
+        output = popen.stdout.read()
+        print("SHELL Output after create" + str(output))
         ##pks resize CLUSTER-NAME --num-nodes NUMBER-OF-WORKER-NODES
     except subprocess.CalledProcessError:
         print("Error Occured" + output)

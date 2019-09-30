@@ -85,7 +85,7 @@ def pksnodecreate():
         clusterdict = str(output)
         #pksPrecluster = clusterdict.loads
         print(clusterdict)
-        clusternodes = dict(s.split(':') for s in clusterdict)
+        clusternodes = clusterdict.split(':')
         print (clusternodes)
 
     except subprocess.CalledProcessError:

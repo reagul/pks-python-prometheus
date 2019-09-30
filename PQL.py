@@ -65,7 +65,7 @@ def mainloop():
                 currentDT = datetime.datetime.now()
                 print ("Current Second is: %d" % currentDT.second)
 
-def pksnodecreate():
+def pksnodecreate(scaleWorkerNodeNumber):
 
    ## REad the curre
     args = ("pks","login","-a","pks.corp.local","-u","pksadmin","-k","-p","VMware1!")
@@ -97,6 +97,8 @@ def pksnodecreate():
         print(one,four,eight)
         workernodes = eight.split(':')
         presentworkernode = workernodes[1].strip()
+        if scaleWorkerNodeNumber < presentworkernode :
+            print("scaling Down: ParamScale is les than" + scaleWorkerNodeNumber + " Present scale"
         print(presentworkernode)
         #parts = re.split(':', clusternodes)
         #print(parts)
@@ -108,6 +110,7 @@ def pksnodecreate():
     nodeargs = ("pks resize my-cluster --num-nodes=3 --non-interactive")
     try:
         ## foo_proc = Popen(['ionic', 'cordova', 'prepare'], stdin=PIPE, stdout=PIPE)
+        print(shlex.split(nodeargs))
         popen = Popen(shlex.split(nodeargs), stdin=PIPE, stdout=PIPE, stderr=PIPE)
         print("COMMAND ISSUED " + str(nodeargs))
         #popen = Popen(nodeargs, stdin=PIPE, stdout=PIPE, shell=True)
@@ -118,7 +121,7 @@ def pksnodecreate():
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
 
-
+    return presentworkernode
 
 if __name__== "__main__":
     mainloop()

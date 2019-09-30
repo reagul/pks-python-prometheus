@@ -4,6 +4,7 @@ import datetime
 import json
 import subprocess
 import shlex
+import re
 from subprocess import Popen,PIPE
 
 PROMETHEUS = 'http://prometheus.my-clusterapps.corp.local/'

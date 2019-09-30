@@ -93,9 +93,8 @@ def pksnodecreate():
         popen = Popen(args, stdin=PIPE, stdout=PIPE, shell=True)
         popen.wait()
         output = popen.stdout.read()
-        popen.communicate(input='y')
-        output = popen.stdout.read()
-        print("SHELL Output after create" + str(output))
+        nodeoutput, err = popen.communicate(input='y')
+        print("SHELL Output after create" + str(nodeoutput))
         ##pks resize CLUSTER-NAME --num-nodes NUMBER-OF-WORKER-NODES
     except subprocess.CalledProcessError:
         print("Error Occured" + output)

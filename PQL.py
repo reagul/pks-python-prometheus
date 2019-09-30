@@ -87,14 +87,15 @@ def pksnodecreate():
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
 
-    nodeargs = ("pks","resize","my-cluster","--num-nodes=4","--non-interactive")
-
+    #nodeargs = ("pks","resize","my-cluster","--num-nodes=","4","--non-interactive")
+    nodeargs = ("pks resize my-cluster --num-nodes=4 --non-interactive")
     try:
         ## foo_proc = Popen(['ionic', 'cordova', 'prepare'], stdin=PIPE, stdout=PIPE)
+        popen = Popen(shlex.split(nodeargs), stdin=PIPE, stdout=PIPE, stderr=PIPE)
         print("COMMAND ISSUED " + str(nodeargs))
-        popen = Popen(nodeargs, stdin=PIPE, stdout=PIPE, shell=True)
+        #popen = Popen(nodeargs, stdin=PIPE, stdout=PIPE, shell=True)
         popen.wait()
-        output = popen.stdout.read()
+        (stdout, stderr) = popen.communicate()
         print("SHELL Output after create" + str(output))
         ##pks resize CLUSTER-NAME --num-nodes NUMBER-OF-WORKER-NODES
     except subprocess.CalledProcessError:

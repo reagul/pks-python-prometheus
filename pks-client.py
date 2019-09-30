@@ -5,6 +5,7 @@ args = ("pks","login","-a","pks.corp.local","-u","pksadmin","-k","-p","VMware1!"
 popen = subprocess.Popen(args, stdout=subprocess.PIPE)
 popen.wait()
 output, err = popen.communicate()
-##exitcode = popen.returncode
+exitcode = popen.returncode
 print err
-print out
+print output
+print exitcode

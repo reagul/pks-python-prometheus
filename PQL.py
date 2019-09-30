@@ -100,7 +100,7 @@ def numNodes():
         popen = subprocess.Popen(pksPrenodes, stdout=subprocess.PIPE)
         popen.wait()
         output = popen.stdout.read()
-        print(str(out)
+        print(str(out))
         pksPrecluster = str(out).loads
 
 if __name__== "__main__":

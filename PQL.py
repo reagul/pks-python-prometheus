@@ -84,7 +84,7 @@ def pksnodecreate():
         output = popen.stdout.read()
         clusterdict = str(output)
         #pksPrecluster = clusterdict.loads
-        print(clusterdict)
+        #print(clusterdict)
         clusternodes = clusterdict.split(':')
         print (clusternodes)
 

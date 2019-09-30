@@ -79,7 +79,7 @@ def pksnodecreate():
         print("Error Occured" + output)
 
     #nodeargs = ("pks","resize","my-cluster","--num-nodes=","4","--non-interactive")
-    nodeargs = ("pks resize my-cluster --num-nodes=5 --non-interactive")
+    nodeargs = ("pks resize my-cluster --num-nodes=3 --non-interactive")
     try:
         ## foo_proc = Popen(['ionic', 'cordova', 'prepare'], stdin=PIPE, stdout=PIPE)
         popen = Popen(shlex.split(nodeargs), stdin=PIPE, stdout=PIPE, stderr=PIPE)

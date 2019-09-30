@@ -53,7 +53,7 @@ def mainloop():
                     ##time.sleep(60)
                     print("kickoff node creation")
                     print("sleep for 10 mins")
-                    ##pksnodecreate()
+                    pksnodecreate()
                     time.sleep(600)
             except IndexError:
                 print("INDEXERROR: waiting 20 secs")
@@ -78,6 +78,17 @@ def pksnodecreate():
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
 
+    pksPrenodes = " pks cluster my-cluster"
+    try:
+        popen = subprocess.Popen(pksPrenodes, stdout=subprocess.PIPE)
+        popen.wait()
+        output = popen.stdout.read()
+        print(str(out))
+        pksPrecluster = str(out).loads
+
+    except subprocess.CalledProcessError:
+        print("Error Occured" + output)
+
     #nodeargs = ("pks","resize","my-cluster","--num-nodes=","4","--non-interactive")
     nodeargs = ("pks resize my-cluster --num-nodes=3 --non-interactive")
     try:
@@ -92,19 +103,7 @@ def pksnodecreate():
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
 
-def numNodes():
 
-    # pks cluster my-cluster
-    pksPrenodes = " pks cluster my-cluster"
-    try:
-        popen = subprocess.Popen(pksPrenodes, stdout=subprocess.PIPE)
-        popen.wait()
-        output = popen.stdout.read()
-        print(str(out))
-        pksPrecluster = str(out).loads
-
-    except subprocess.CalledProcessError:
-        print("Error Occured" + output)
 
 if __name__== "__main__":
     mainloop()

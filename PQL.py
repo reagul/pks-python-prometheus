@@ -55,12 +55,12 @@ def mainloop():
                 cpupercent = (float(cpuutil))
                 cpufinal = int(round(cpupercent,2) * 100)
                 if cpufinal > 75 :
-                    print("CPU util over 75 so sleep for 1mins")
-                    time.sleep(60)
+                    ##print("CPU util over 75 so sleep for 1mins")
+                    ##time.sleep(60)
                     print("kickoff node creation")
                     print("sleep for 10 mins")
                     pksnodecreate()
-                    ##time.sleep(600)
+                    time.sleep(600)
             except IndexError:
                 print("INDEXERROR: waiting 20 secs")
                 time.sleep(20)
@@ -86,7 +86,7 @@ def pksnodecreate():
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
 
-    args = ("pks","resize","my-cluster","--num-nodes","3","--non-interactive")
+    args = ("pks","resize","my-cluster","--num-nodes=","3","--non-interactive")
 
     try:
         ## foo_proc = Popen(['ionic', 'cordova', 'prepare'], stdin=PIPE, stdout=PIPE)

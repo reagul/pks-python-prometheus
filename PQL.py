@@ -65,8 +65,9 @@ def mainloop():
                 currentDT = datetime.datetime.now()
                 print ("Current Second is: %d" % currentDT.second)
 
-def pksnodecreate(scaleWorkerNodeNumber):
+##def pksnodecreate(scaleWorkerNodeNumber):
 
+def pksnodecreate():
    ## REad the curre
     args = ("pks","login","-a","pks.corp.local","-u","pksadmin","-k","-p","VMware1!")
     try:
@@ -121,7 +122,7 @@ def pksnodecreate(scaleWorkerNodeNumber):
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
 
-    return presentworkernode
+    #return presentworkernode
 
 if __name__== "__main__":
     mainloop()

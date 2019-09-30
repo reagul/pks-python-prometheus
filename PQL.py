@@ -103,5 +103,8 @@ def numNodes():
         print(str(out))
         pksPrecluster = str(out).loads
 
+    except subprocess.CalledProcessError:
+        print("Error Occured" + output)
+        
 if __name__== "__main__":
     mainloop()

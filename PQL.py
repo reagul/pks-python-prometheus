@@ -32,7 +32,7 @@ def mainloop():
             print("ERROR1: fetching METRIC_SERVER ..wait 20s")
             ## fall to secondary metric from METRIC_SERVER
             time.sleep(10)
-            metricserver()
+            pksnodecreate()
             time.sleep(20)
             pass
 
@@ -62,7 +62,7 @@ def mainloop():
                     time.sleep(300)
             except IndexError:
                 print("ERROR2: waiting 15 secs")
-                metricserver()
+                pksnodecreate()
                 time.sleep(15)
                 pass
             else:
@@ -70,7 +70,7 @@ def mainloop():
                 currentDT = datetime.datetime.now()
                 print ("Current Second is: %d" % currentDT.second)
 
-def metricserver():
+def pksnodecreate():
 
     args = ("pks","login","-a","pks.corp.local","-u","pksadmin","-k","-p","VMware1!")
     try:

@@ -53,7 +53,7 @@ def mainloop():
                     ##time.sleep(60)
                     print("kickoff node creation")
                     print("sleep for 10 mins")
-                    pksnodecreate()
+                    ##pksnodecreate()
                     time.sleep(600)
             except IndexError:
                 print("INDEXERROR: waiting 20 secs")
@@ -101,6 +101,7 @@ def numNodes():
         popen.wait()
         output = popen.stdout.read()
         print(str(out)
+        pksPreNodeDict = str(out).loads
 
 if __name__== "__main__":
     mainloop()

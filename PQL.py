@@ -37,13 +37,6 @@ def mainloop():
 
         else:
 
-            #print("^^^^^^^^^")
-            #print(results.keys())
-            ##[u'status', u'data']
-            #print("^^^^^^^^^")
-            ## ..///metricdict = results['data']
-            #print(metricdict.keys())
-            #[u'resultType', u'result']
             cpumetric = metricdict['result']
             ##{u'metric': {}, u'value': [1569622615.046, u'0.6176136522020318']}
             try:
@@ -52,7 +45,7 @@ def mainloop():
                 #print("rrr=" + str(cpuavg['value']))
                 cpuutil = cpuavg['value'][1]
 
-                print("$$$$==" + str(cpuutil))
+                print("CPU-UTIL % ==" + str(cpuutil))
                 cpupercent = (float(cpuutil))
                 cpufinal = int(round(cpupercent,2) * 100)
                 if cpufinal > 75 :
@@ -73,9 +66,7 @@ def mainloop():
 
 def pksnodecreate():
 
-
-   ## REad the current nodes and append by 1
-
+   ## REad the curre
     args = ("pks","login","-a","pks.corp.local","-u","pksadmin","-k","-p","VMware1!")
     try:
 
@@ -100,6 +91,16 @@ def pksnodecreate():
         ##pks resize CLUSTER-NAME --num-nodes NUMBER-OF-WORKER-NODES
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
+
+def numNodes():
+
+    # pks cluster my-cluster
+    pksPrenodes = " pks cluster my-cluster"
+    try:
+        popen = subprocess.Popen(pksPrenodes, stdout=subprocess.PIPE)
+        popen.wait()
+        output = popen.stdout.read()
+        print(str(out)
 
 if __name__== "__main__":
     mainloop()

@@ -77,7 +77,7 @@ def pksnodecreate():
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
 
-    pksPrenodes = " pks cluster my-cluster"
+    pksPrenodes = "pks cluster my-cluster"
     try:
         popen = subprocess.Popen(pksPrenodes, stdout=subprocess.PIPE)
         popen.wait()

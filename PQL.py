@@ -95,8 +95,8 @@ def pksnodecreate():
         print(len(clusternodes))
         one,four,eight=operator.itemgetter(1,4,8)(clusternodes)
         print(one,four,eight)
-        workernodes = eight.split(':').[1]
-        print(workernodes)
+        workernodes = eight.split(':')
+        print(workernodes[1])
         #parts = re.split(':', clusternodes)
         #print(parts)
 

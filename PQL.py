@@ -90,6 +90,7 @@ def pksnodecreate():
 
     try:
         ## foo_proc = Popen(['ionic', 'cordova', 'prepare'], stdin=PIPE, stdout=PIPE)
+        print("COMMAND ISSUED " + str(args))
         popen = Popen(args, stdin=PIPE, stdout=PIPE, shell=True)
         popen.wait()
         output = popen.stdout.read()

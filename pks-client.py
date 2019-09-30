@@ -12,7 +12,7 @@ print ("exitcode" + str(exitcode))
 
 if err == 'None':
     print("No err")
-else if exitcode != 0:
+elif exitcode != 0:
     print("exit code was NON zero")
 else  exitco == 0:
     print("exit code was zero")

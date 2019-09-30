@@ -101,7 +101,7 @@ def numNodes():
         popen.wait()
         output = popen.stdout.read()
         print(str(out)
-        pksPreNodeDict = str(out).loads
+        pksPrecluster = str(out).loads
 
 if __name__== "__main__":
     mainloop()

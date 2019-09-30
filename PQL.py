@@ -44,10 +44,9 @@ def mainloop():
                 ##rrr=[1569623191.881, u'0.6377711405523562']
                 #print("rrr=" + str(cpuavg['value']))
                 cpuutil = cpuavg['value'][1]
-
-                print("CPU-UTIL % ==" + str(cpuutil))
                 cpupercent = (float(cpuutil))
                 cpufinal = int(round(cpupercent,2) * 100)
+                print("CPU-UTIL % ==" + str(cpufinal))
                 if cpufinal > 75 :
                     ##print("CPU util over 75 so sleep for 1mins")
                     ##time.sleep(60)
@@ -105,6 +104,6 @@ def numNodes():
 
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
-        
+
 if __name__== "__main__":
     mainloop()

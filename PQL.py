@@ -28,11 +28,8 @@ def mainloop():
         except ValueError, e:
             # no JSON returned
             ## possible 502 error
-            print("EPRINTEF:" + str(e))
-            print("ERROR1: fetching METRIC_SERVER ..wait 20s")
+            print("sleep 20 secs VALUEERROR:" + str(e))
             ## fall to secondary metric from METRIC_SERVER
-            time.sleep(10)
-            pksnodecreate()
             time.sleep(20)
             pass
 
@@ -58,12 +55,12 @@ def mainloop():
                 cpufinal = int(round(cpupercent,2) * 100)
                 if cpufinal > 75 :
                     print("kickoff node creation")
-                    print("sleep for 5 mins")
-                    time.sleep(300)
+                    print("sleep for 10 mins")
+                    pksnodecreate()
+                    time.sleep(600)
             except IndexError:
-                print("ERROR2: waiting 15 secs")
-                pksnodecreate()
-                time.sleep(15)
+                print("INDEXERROR: waiting 20 secs")
+                time.sleep(20)
                 pass
             else:
             ## $$$$==0.689901996444132
@@ -78,10 +75,22 @@ def pksnodecreate():
         popen = subprocess.Popen(args, stdout=subprocess.PIPE)
         popen.wait()
         output = popen.stdout.read()
-        ##print output
+        popennodecreate =
+        ##pks resize CLUSTER-NAME --num-nodes NUMBER-OF-WORKER-NODES
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
 
+    args = ("pks","resize","my-cluster","--num-nodes","1")
+
+    try:
+
+        popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+        popen.wait()
+        output = popen.stdout.read()
+        popennodecreate =
+        ##pks resize CLUSTER-NAME --num-nodes NUMBER-OF-WORKER-NODES
+    except subprocess.CalledProcessError:
+        print("Error Occured" + output)
 
 if __name__== "__main__":
     mainloop()

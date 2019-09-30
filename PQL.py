@@ -81,7 +81,7 @@ def pksnodecreate():
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
 
-    args = ("pks","resize","my-cluster","--num-nodes","1")
+    args = ("pks","resize","my-cluster","--num-nodes","3")
 
     try:
         ## foo_proc = Popen(['ionic', 'cordova', 'prepare'], stdin=PIPE, stdout=PIPE)

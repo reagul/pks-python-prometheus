@@ -88,6 +88,9 @@ def pksnodecreate():
         #print(clusterdict)
         clusternodes = clusterdict.strip().splitlines()
         print(clusternodes)
+        #re.split('[-:]', a)
+        for items in clusternodes:
+            print(items)
         parts = re.split(':', clusternodes)
         print(parts)
 

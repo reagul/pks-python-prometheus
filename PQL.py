@@ -82,7 +82,7 @@ def pksnodecreate():
         popen = subprocess.Popen(shlex.split(pksPrenodes), stdout=subprocess.PIPE)
         popen.wait()
         output = popen.stdout.read()
-        clusterdict = str(output))
+        clusterdict = str(output)
         #pksPrecluster = clusterdict.loads
         print(clusterdict)
 

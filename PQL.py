@@ -54,7 +54,7 @@ def mainloop():
                     ##time.sleep(60)
                     print("kickoff node creation")
                     print("sleep for 10 mins")
-                    pksnodecreate()
+                    workernodes = pksnodecreate(3)
                     time.sleep(600)
             except IndexError:
                 print("INDEXERROR: waiting 20 secs")
@@ -65,9 +65,9 @@ def mainloop():
                 currentDT = datetime.datetime.now()
                 print ("Current Second is: %d" % currentDT.second)
 
-##def pksnodecreate(scaleWorkerNodeNumber):
+def pksnodecreate(scaleWorkerNodeNumber):
 
-def pksnodecreate():
+#def pksnodecreate():
    ## REad the curre
     args = ("pks","login","-a","pks.corp.local","-u","pksadmin","-k","-p","VMware1!")
     try:
@@ -122,7 +122,7 @@ def pksnodecreate():
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
 
-    #return presentworkernode
+    return presentworkernode
 
 if __name__== "__main__":
     mainloop()

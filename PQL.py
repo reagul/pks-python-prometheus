@@ -82,8 +82,9 @@ def pksnodecreate():
         popen = subprocess.Popen(shlex.split(pksPrenodes), stdout=subprocess.PIPE)
         popen.wait()
         output = popen.stdout.read()
-        print(str(output))
-        pksPrecluster = str(output).loads
+        clusterdict = str(output))
+        #pksPrecluster = clusterdict.loads
+        print(clusterdict)
 
     except subprocess.CalledProcessError:
         print("Error Occured" + output)

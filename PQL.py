@@ -79,7 +79,7 @@ def pksnodecreate():
 
     pksPrenodes = "pks cluster my-cluster"
     try:
-        popen = subprocess.Popen(pksPrenodes, stdout=subprocess.PIPE)
+        popen = subprocess.Popen(shlex.split(pksPrenodes), stdout=subprocess.PIPE)
         popen.wait()
         output = popen.stdout.read()
         print(str(output))

@@ -47,7 +47,6 @@ def mainloop():
                 cpupercent = (float(cpuutil))
                 cpufinal = int(round(cpupercent,2) * 100)
                 print("CPU-UTIL % ==" + str(cpufinal))
-                numNodes()
                 if cpufinal > 75 :
                     ##print("CPU util over 75 so sleep for 1mins")
                     ##time.sleep(60)

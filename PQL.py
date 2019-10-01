@@ -121,7 +121,7 @@ def pksnodecreate():
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
 
-    return presentworkernode
+    return presentworkernodeNumber
 
 if __name__== "__main__":
     mainloop()

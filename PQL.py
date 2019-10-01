@@ -39,6 +39,7 @@ def mainloop():
             # no JSON returned
             ## possible 502 error
             print("sleep 20 secs VALUEERROR:" + str(e))
+            logFileWriter('WARN',str(e))
             ## fall to secondary metric from METRIC_SERVER
             time.sleep(20)
             pass
@@ -55,21 +56,27 @@ def mainloop():
                 cpupercent = (float(cpuutil))
                 cpufinal = int(round(cpupercent,2) * 100)
                 print("CPU-UTIL % ==" + str(cpufinal))
+                logFileWriter('INFO',str(cpufinal))
                 if cpufinal > 85 :
                     ##print("CPU util over 75 so sleep for 1mins")
                     ##time.sleep(60)
                     print("INFO: kickoff node creation + Sleep 10 min")
+                    logFileWriter('INFO','Nodecreation kickoff')
                     workernodes = pksnodecreate()
                     print("INFO: WORKER NODES:=" + str(workernodes))
+                    logFileWriter('INFO','Updated WorkerNodes Count=' + str(workernodes))
+                    logFileWriter('INFO','SLEEP 10 minutes')
                     time.sleep(600)
             except IndexError:
                 print("INDEXERROR: waiting 3 Minutes")
+                logFileWriter('WARN','INDEXERROR: Sleeping 3 minutes')
                 time.sleep(180)
                 pass
             else:
             ## $$$$==0.689901996444132
                 currentDT = datetime.datetime.now()
                 print ("Current Second is: %d" % currentDT.second)
+
 
 def pksnodecreate():
 
@@ -85,7 +92,7 @@ def pksnodecreate():
         ##pks resize CLUSTER-NAME --num-nodes NUMBER-OF-WORKER-NODES
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
-
+        logFileWriter('WARN','Error Occured' + output)
     pksPrenodes = "pks cluster my-cluster"
     try:
         popen = subprocess.Popen(shlex.split(pksPrenodes), stdout=subprocess.PIPE)
@@ -102,15 +109,18 @@ def pksnodecreate():
         presentworkernodeNumber = workernodes[1].strip()
         scaleWorkerNodeNumber = int(presentworkernodeNumber) + 1
         print("INFO: scaleWorkerNodeNumber:" + str(scaleWorkerNodeNumber))
+        logFileWriter('INFO','New Scale Updated Nodes Count=' + str(scaleWorkerNodeNumber))
         if ( int(scaleWorkerNodeNumber) < int(presentworkernodeNumber) ):
             print("WARN: scaling Down..new scale:" + str(scaleWorkerNodeNumber) + " is less then Present scale: " + str(presentworkernode))
+            logFileWriter('WARN',"Saling Down..new scale:" + str(scaleWorkerNodeNumber) + " is less then Present scale: " + str(presentworkernode))
         if ( int(scaleWorkerNodeNumber) == int(presentworkernodeNumber) ):
             print("WARN: Cluster is already at the same scale nothing to do here..returning empty")
+            logFileWriter('WARN','Cluster is already at the same scale nothing to do here..returning empty')
             return scaleWorkerNodeNumber
 
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
-
+        logFileWriter('WARN','Error Occured' + output)
     #nodeargs = ("pks","resize","my-cluster","--num-nodes=","4","--non-interactive")
 
     nodeargs = "pks resize my-cluster --num-nodes=" + str(scaleWorkerNodeNumber) + " --non-interactive"
@@ -119,13 +129,14 @@ def pksnodecreate():
 
         popen = Popen(shlex.split(nodeargs), stdin=PIPE, stdout=PIPE, stderr=PIPE)
         print("COMMAND ISSUED " + str(nodeargs))
+        logFileWriter('INFO','COMMAND ISSUED:=' + str(nodeargs))
         popen.wait()
         (stdout, stderr) = popen.communicate()
         #print("SHELL Output after create" + str(output))
         ##pks resize CLUSTER-NAME --num-nodes NUMBER-OF-WORKER-NODES
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
-
+        logFileWriter('WARN','Error Occured' + output)
     return scaleWorkerNodeNumber
 
 def logFileCreate():

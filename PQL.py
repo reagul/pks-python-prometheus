@@ -113,7 +113,7 @@ def pksnodecreate():
     try:
 
         popen = Popen(shlex.split(nodeargs), stdin=PIPE, stdout=PIPE, stderr=PIPE)
-        #print("COMMAND ISSUED " + str(nodeargs))
+        print("COMMAND ISSUED " + str(nodeargs))
         popen.wait()
         (stdout, stderr) = popen.communicate()
         #print("SHELL Output after create" + str(output))
@@ -121,7 +121,7 @@ def pksnodecreate():
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
 
-    return presentworkernodeNumber
+    return scaleWorkerNodeNumber
 
 if __name__== "__main__":
     mainloop()

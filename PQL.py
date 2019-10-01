@@ -113,7 +113,7 @@ def pksnodecreate(scaleWorkerNodeNumber):
 
     #nodeargs = ("pks","resize","my-cluster","--num-nodes=","4","--non-interactive")
 
-    nodeargs = "pks resize my-cluster --num-nodes=" + str(workernodes) + " --non-interactive"
+    nodeargs = "pks resize my-cluster --num-nodes=" + str(presentworkernode) + " --non-interactive"
     #nodeargs = ("pks resize my-cluster --num-nodes=3 --non-interactive")
     try:
         ## foo_proc = Popen(['ionic', 'cordova', 'prepare'], stdin=PIPE, stdout=PIPE)

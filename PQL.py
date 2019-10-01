@@ -54,7 +54,7 @@ def mainloop():
                     ##time.sleep(60)
                     print("kickoff node creation")
                     print("sleep for 10 mins")
-                    workernodes = pksnodecreate(3)
+                    workernodes = pksnodecreate()
                     print("WORKER NODES:=" + str(workernodes))
                     time.sleep(600)
             except IndexError:
@@ -66,7 +66,7 @@ def mainloop():
                 currentDT = datetime.datetime.now()
                 print ("Current Second is: %d" % currentDT.second)
 
-def pksnodecreate(scaleWorkerNodeNumber):
+def pksnodecreate():
 
 #def pksnodecreate():
    ## REad the curre
@@ -91,12 +91,15 @@ def pksnodecreate(scaleWorkerNodeNumber):
         #print(len(clusternodes))
         one,four,eight=operator.itemgetter(1,4,8)(clusternodes)
         #print(one,four,eight)
+        ###
+        ### AUTO adding 1 more node each time THIS loop is called
         workernodes = eight.split(':')
-        presentworkernode = workernodes[1].strip()
-        print("scaleWorkerNodeNumber" + str(scaleWorkerNodeNumber))
-        if ( int(scaleWorkerNodeNumber) < int(presentworkernode) ):
+        presentworkernodeNumber = workernodes[1].strip()
+        scaleWorkerNodeNumber = presentworkernodeNumber + 1
+        print("scaleWorkerNodeNumber:" + str(scaleWorkerNodeNumber))
+        if ( int(scaleWorkerNodeNumber) < int(presentworkernodeNumber) ):
             print("WARN: scaling Down..new scale:" + str(scaleWorkerNodeNumber) + " is less then Present scale: " + str(presentworkernode))
-        if ( int(scaleWorkerNodeNumber) == int(presentworkernode) ):
+        if ( int(scaleWorkerNodeNumber) == int(presentworkernodeNumber) ):
             print("WARN: Cluster is already at the same scale nothing to do here..returning empty")
             return scaleWorkerNodeNumber
 

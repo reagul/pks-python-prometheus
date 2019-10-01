@@ -101,6 +101,9 @@ def pksnodecreate(scaleWorkerNodeNumber):
         presentworkernode = workernodes[1].strip()
         if scaleWorkerNodeNumber < presentworkernode :
             print("scaling Down: ParamScale is les than" + str(scaleWorkerNodeNumber) + " ...Present scale: " + str(presentworkernode))
+        if scaleWorkerNodeNumber == presentworkernode :
+            print("Cluster is already at the same scale nothing to do here..")
+            return workernodes
         #print(presentworkernode)
         #parts = re.split(':', clusternodes)
         #print(parts)
@@ -109,7 +112,9 @@ def pksnodecreate(scaleWorkerNodeNumber):
         print("Error Occured" + output)
 
     #nodeargs = ("pks","resize","my-cluster","--num-nodes=","4","--non-interactive")
-    nodeargs = ("pks resize my-cluster --num-nodes=3 --non-interactive")
+
+    nodeargs = "pks resize my-cluster --num-nodes=" + str(workernodes) + "--non-interactive"
+    #nodeargs = ("pks resize my-cluster --num-nodes=3 --non-interactive")
     try:
         ## foo_proc = Popen(['ionic', 'cordova', 'prepare'], stdin=PIPE, stdout=PIPE)
         print(shlex.split(nodeargs))

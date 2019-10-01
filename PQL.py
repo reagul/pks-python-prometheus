@@ -102,12 +102,22 @@ def pksnodecreate(scaleWorkerNodeNumber):
         print("scaleWorkerNodeNumber" + str(scaleWorkerNodeNumber))
         if ( scaleWorkerNodeNumber < presentworkernode ):
             print("scaling Down: ParamScale is les than" + str(scaleWorkerNodeNumber) + " ...Present scale: " + str(presentworkernode))
-        if ( scaleWorkerNodeNumber == presentworkernode ):
+        elif ( scaleWorkerNodeNumber == presentworkernode ):
             print("Cluster is already at the same scale nothing to do here..")
             return workernodes
-        #print(presentworkernode)
-        #parts = re.split(':', clusternodes)
-        #print(parts)
+        else :
+            a = 21
+            b = 10
+            c = 0
+            if ( scaleWorkerNodeNumber < presentworkernode ):
+               print "Line 4 - a is less than b"
+            else:
+               print "Line 4 - a is not less than b"
+
+            if ( a > b ):
+               print "Line 5 - a is greater than b"
+            else:
+               print "Line 5 - a is not greater than b"
 
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
@@ -117,11 +127,9 @@ def pksnodecreate(scaleWorkerNodeNumber):
     nodeargs = "pks resize my-cluster --num-nodes=" + str(presentworkernode) + " --non-interactive"
     #nodeargs = ("pks resize my-cluster --num-nodes=3 --non-interactive")
     try:
-        ## foo_proc = Popen(['ionic', 'cordova', 'prepare'], stdin=PIPE, stdout=PIPE)
-        print(shlex.split(nodeargs))
+
         popen = Popen(shlex.split(nodeargs), stdin=PIPE, stdout=PIPE, stderr=PIPE)
         print("COMMAND ISSUED " + str(nodeargs))
-        #popen = Popen(nodeargs, stdin=PIPE, stdout=PIPE, shell=True)
         popen.wait()
         (stdout, stderr) = popen.communicate()
         print("SHELL Output after create" + str(output))

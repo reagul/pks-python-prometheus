@@ -87,8 +87,6 @@ def pksnodecreate(scaleWorkerNodeNumber):
         popen.wait()
         output = popen.stdout.read()
         clusterdict = str(output)
-        #pksPrecluster = clusterdict.loads
-        #print(clusterdict)
         clusternodes = clusterdict.strip().splitlines()
         #print(len(clusternodes))
         one,four,eight=operator.itemgetter(1,4,8)(clusternodes)
@@ -96,31 +94,18 @@ def pksnodecreate(scaleWorkerNodeNumber):
         workernodes = eight.split(':')
         presentworkernode = workernodes[1].strip()
         print("scaleWorkerNodeNumber" + str(scaleWorkerNodeNumber))
-        #if ( scaleWorkerNodeNumber < presentworkernode ):
-            #print("scaling Down: ParamScale is les than" + str(scaleWorkerNodeNumber) + " ...Present scale: " + str(presentworkernode))
+        if ( int(scaleWorkerNodeNumber) < int(presentworkernode) ):
+            print("scaling Down: ParamScale is les than" + str(scaleWorkerNodeNumber) + " ...Present scale: " + str(presentworkernode))
         if ( int(scaleWorkerNodeNumber) == int(presentworkernode) ):
             print("Cluster is already at the same scale nothing to do here..")
             return workernodes
-        else :
-            a = 21
-            b = 10
-            c = 0
-            if ( scaleWorkerNodeNumber < presentworkernode ):
-               print "Line 4 - a is less than b"
-            else:
-               print "Line 4 - a is not less than b"
-
-            if ( a > b ):
-               print "Line 5 - a is greater than b"
-            else:
-               print "Line 5 - a is not greater than b"
 
     except subprocess.CalledProcessError:
         print("Error Occured" + output)
 
     #nodeargs = ("pks","resize","my-cluster","--num-nodes=","4","--non-interactive")
 
-    nodeargs = "pks resize my-cluster --num-nodes=" + str(presentworkernode) + " --non-interactive"
+    nodeargs = "pks resize my-cluster --num-nodes=" + str(scaleWorkerNodeNumber) + " --non-interactive"
     #nodeargs = ("pks resize my-cluster --num-nodes=3 --non-interactive")
     try:
 

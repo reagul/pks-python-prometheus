@@ -6,13 +6,17 @@ import subprocess
 import shlex
 import re
 import operator
+import logging
 from subprocess import Popen,PIPE
 
 PROMETHEUS = 'http://prometheus.my-clusterapps.corp.local/'
+nodescalerlogfile = 'NodeScaler.txt'
 
 
 def mainloop():
 
+    ## Create the NodeLogger file
+    logFileCreate()
     while True:
     #'query': 'sum by (job)(increase(process_cpu_seconds_total' + duration + '))',
         response = requests.get(PROMETHEUS + '/api/v1/query',
@@ -24,8 +28,9 @@ def mainloop():
         ## http://prometheus.my-clusterapps.corp.local/api/v1/query?query=1%20-%20avg(rate(node_cpu_seconds_total{mode=%22idle%22}[1m]))
         try:
             ##responses = response.json()
-            print("^^^^^^^^^")
+            logFileWriter('INFO',"^^^^^^^^^^^^^")
             print("STATUS:" + str(response.status_code))
+            logFileWriter('INFO',str(response.status_code))
             results = json.loads(response.text)
             metricdict = results['data']
             # ...
@@ -49,17 +54,16 @@ def mainloop():
                 cpupercent = (float(cpuutil))
                 cpufinal = int(round(cpupercent,2) * 100)
                 print("CPU-UTIL % ==" + str(cpufinal))
-                if cpufinal > 75 :
+                if cpufinal > 85 :
                     ##print("CPU util over 75 so sleep for 1mins")
                     ##time.sleep(60)
-                    print("kickoff node creation")
-                    print("sleep for 10 mins")
+                    print("INFO: kickoff node creation + Sleep 10 min")
                     workernodes = pksnodecreate()
-                    print("WORKER NODES:=" + str(workernodes))
+                    print("INFO: WORKER NODES:=" + str(workernodes))
                     time.sleep(600)
             except IndexError:
-                print("INDEXERROR: waiting 20 secs")
-                time.sleep(20)
+                print("INDEXERROR: waiting 3 Minutes")
+                time.sleep(180)
                 pass
             else:
             ## $$$$==0.689901996444132
@@ -122,6 +126,36 @@ def pksnodecreate():
         print("Error Occured" + output)
 
     return scaleWorkerNodeNumber
+
+def logFileCreate():
+
+    if os.path.exists(filename):
+        append_write = 'a' # append if already exists
+    else:
+        append_write = 'w' # make a new file if not
+
+        nodelog = open(nodescalerlogfile,append_write)
+        nodelog.write("INFO: File ready for Logging NodeScaler \n")
+        nodelog.close()
+
+def logFileWriter(infolevel,message):
+
+    ## https://docs.python.org/2.4/lib/minimal-example.html
+    logging.basicConfig(level=logging.INFO,
+                    format ='%(asctime)s %(levelname)s %(message)s',
+                    filename = nodescalerlogfile ,
+                    filemode ='w')
+
+
+    if infolevel == 'DEBUG' :
+        logging.debug(message)
+    elif infolevel == 'INFO' :
+        logging.info(message)
+    elif infolevel == 'WARN' :
+        logging.warning(message)
+    else:
+        logging.warn(message)
+
 
 if __name__== "__main__":
     mainloop()

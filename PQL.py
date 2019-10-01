@@ -7,6 +7,7 @@ import shlex
 import re
 import operator
 import logging
+import os
 from subprocess import Popen,PIPE
 
 PROMETHEUS = 'http://prometheus.my-clusterapps.corp.local/'

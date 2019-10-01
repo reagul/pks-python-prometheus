@@ -100,9 +100,9 @@ def pksnodecreate(scaleWorkerNodeNumber):
         workernodes = eight.split(':')
         presentworkernode = workernodes[1].strip()
         print("scaleWorkerNodeNumber" + str(scaleWorkerNodeNumber))
-        if scaleWorkerNodeNumber < presentworkernode :
+        if ( scaleWorkerNodeNumber < presentworkernode ):
             print("scaling Down: ParamScale is les than" + str(scaleWorkerNodeNumber) + " ...Present scale: " + str(presentworkernode))
-        if scaleWorkerNodeNumber == presentworkernode :
+        if ( scaleWorkerNodeNumber == presentworkernode ):
             print("Cluster is already at the same scale nothing to do here..")
             return workernodes
         #print(presentworkernode)

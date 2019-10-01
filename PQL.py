@@ -95,9 +95,9 @@ def pksnodecreate(scaleWorkerNodeNumber):
         presentworkernode = workernodes[1].strip()
         print("scaleWorkerNodeNumber" + str(scaleWorkerNodeNumber))
         if ( int(scaleWorkerNodeNumber) < int(presentworkernode) ):
-            print("scaling Down: ParamScale is les than" + str(scaleWorkerNodeNumber) + " ...Present scale: " + str(presentworkernode))
+            print("WARN: scaling Down..new scale:" + str(scaleWorkerNodeNumber) + " is less then Present scale: " + str(presentworkernode))
         if ( int(scaleWorkerNodeNumber) == int(presentworkernode) ):
-            print("Cluster is already at the same scale nothing to do here..returning empty")
+            print("WARN: Cluster is already at the same scale nothing to do here..returning empty")
             return scaleWorkerNodeNumber
 
     except subprocess.CalledProcessError:
@@ -110,7 +110,7 @@ def pksnodecreate(scaleWorkerNodeNumber):
     try:
 
         popen = Popen(shlex.split(nodeargs), stdin=PIPE, stdout=PIPE, stderr=PIPE)
-        print("COMMAND ISSUED " + str(nodeargs))
+        #print("COMMAND ISSUED " + str(nodeargs))
         popen.wait()
         (stdout, stderr) = popen.communicate()
         #print("SHELL Output after create" + str(output))

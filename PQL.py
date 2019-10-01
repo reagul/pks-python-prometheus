@@ -130,7 +130,7 @@ def pksnodecreate():
 
 def logFileCreate():
 
-    if os.path.exists(filename):
+    if os.path.exists(nodescalerlogfile):
         append_write = 'a' # append if already exists
     else:
         append_write = 'w' # make a new file if not

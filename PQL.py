@@ -29,9 +29,9 @@ def mainloop():
         ## http://prometheus.my-clusterapps.corp.local/api/v1/query?query=1%20-%20avg(rate(node_cpu_seconds_total{mode=%22idle%22}[1m]))
         try:
             ##responses = response.json()
-            logFileWriter('INFO',"^^^^^^^^^^^^^")
-            print("STATUS:" + str(response.status_code))
-            logFileWriter('INFO',str(response.status_code))
+            logFileWriter('INFO',"^^^^START^^^^^^^^^")
+            print("STATUS:" + "PROMQL API Response Status =" + str(response.status_code))
+            logFileWriter('INFO',"PROMQL API Response Status =" + str(response.status_code))
             results = json.loads(response.text)
             metricdict = results['data']
             # ...
@@ -56,7 +56,7 @@ def mainloop():
                 cpupercent = (float(cpuutil))
                 cpufinal = int(round(cpupercent,2) * 100)
                 print("CPU-UTIL % ==" + str(cpufinal))
-                logFileWriter('INFO',str(cpufinal))
+                logFileWriter('INFO',"CPU-UTIL % ==" + str(cpufinal))
                 if cpufinal > 85 :
                     ##print("CPU util over 75 so sleep for 1mins")
                     ##time.sleep(60)

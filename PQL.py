@@ -55,7 +55,7 @@ def mainloop():
                     print("kickoff node creation")
                     print("sleep for 10 mins")
                     workernodes = pksnodecreate(3)
-                    print("New WORKERnodes = :" + str(workernodes))
+                    print("WORKER NODES:=" + str(workernodes))
                     time.sleep(600)
             except IndexError:
                 print("INDEXERROR: waiting 20 secs")
@@ -97,7 +97,7 @@ def pksnodecreate(scaleWorkerNodeNumber):
         if ( int(scaleWorkerNodeNumber) < int(presentworkernode) ):
             print("scaling Down: ParamScale is les than" + str(scaleWorkerNodeNumber) + " ...Present scale: " + str(presentworkernode))
         if ( int(scaleWorkerNodeNumber) == int(presentworkernode) ):
-            print("Cluster is already at the same scale nothing to do here..")
+            print("Cluster is already at the same scale nothing to do here..returning empty")
             return workernodes
 
     except subprocess.CalledProcessError:
@@ -113,7 +113,7 @@ def pksnodecreate(scaleWorkerNodeNumber):
         print("COMMAND ISSUED " + str(nodeargs))
         popen.wait()
         (stdout, stderr) = popen.communicate()
-        print("SHELL Output after create" + str(output))
+        #print("SHELL Output after create" + str(output))
         ##pks resize CLUSTER-NAME --num-nodes NUMBER-OF-WORKER-NODES
     except subprocess.CalledProcessError:
         print("Error Occured" + output)

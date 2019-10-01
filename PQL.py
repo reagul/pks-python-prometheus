@@ -98,7 +98,7 @@ def pksnodecreate(scaleWorkerNodeNumber):
             print("scaling Down: ParamScale is les than" + str(scaleWorkerNodeNumber) + " ...Present scale: " + str(presentworkernode))
         if ( int(scaleWorkerNodeNumber) == int(presentworkernode) ):
             print("Cluster is already at the same scale nothing to do here..returning empty")
-            return workernodes
+            return scaleWorkerNodeNumber
 
     except subprocess.CalledProcessError:
         print("Error Occured" + output)

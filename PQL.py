@@ -55,7 +55,7 @@ def mainloop():
                     print("kickoff node creation")
                     print("sleep for 10 mins")
                     workernodes = pksnodecreate(3)
-                    print("WORKERnodes = :" + str(workernodes))
+                    print("New WORKERnodes = :" + str(workernodes))
                     time.sleep(600)
             except IndexError:
                 print("INDEXERROR: waiting 20 secs")
@@ -90,19 +90,15 @@ def pksnodecreate(scaleWorkerNodeNumber):
         #pksPrecluster = clusterdict.loads
         #print(clusterdict)
         clusternodes = clusterdict.strip().splitlines()
-        #print(clusternodes)
-        #re.split('[-:]', a)
-        #for items in clusternodes:
-            #print("tdd" + items)
-        print(len(clusternodes))
+        #print(len(clusternodes))
         one,four,eight=operator.itemgetter(1,4,8)(clusternodes)
-        print(one,four,eight)
+        #print(one,four,eight)
         workernodes = eight.split(':')
         presentworkernode = workernodes[1].strip()
         print("scaleWorkerNodeNumber" + str(scaleWorkerNodeNumber))
-        if ( scaleWorkerNodeNumber < presentworkernode ):
-            print("scaling Down: ParamScale is les than" + str(scaleWorkerNodeNumber) + " ...Present scale: " + str(presentworkernode))
-        elif ( scaleWorkerNodeNumber == presentworkernode ):
+        #if ( scaleWorkerNodeNumber < presentworkernode ):
+            #print("scaling Down: ParamScale is les than" + str(scaleWorkerNodeNumber) + " ...Present scale: " + str(presentworkernode))
+        if ( scaleWorkerNodeNumber == presentworkernode ):
             print("Cluster is already at the same scale nothing to do here..")
             return workernodes
         else :

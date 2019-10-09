@@ -107,9 +107,9 @@ def pksnodecreate():
         ### AUTO adding 1 more node each time THIS loop is called
         workernodes = eight.split(':')
         presentworkernodeNumber = workernodes[1].strip()
-        ##print(presentworkernodeNumber)
-        scaleWorkerNodeNumber = int(float(presentworkernodeNumber.strip())) + 1
-        ##print(scaleWorkerNodeNumber)
+        print(presentworkernodeNumber)
+        scaleWorkerNodeNumber = int(float(presentworkernodeNumber) + 1
+        print(scaleWorkerNodeNumber)
         print("INFO: scaleWorkerNodeNumber:" + str(scaleWorkerNodeNumber))
         logFileWriter('INFO','New Scale Updated Nodes Count=' + str(scaleWorkerNodeNumber))
         if ( int(scaleWorkerNodeNumber) < int(presentworkernodeNumber) ):
@@ -129,14 +129,14 @@ def pksnodecreate():
     #nodeargs = ("pks resize my-cluster --num-nodes=3 --non-interactive")
     try:
 
-        popen = Popen(shlex.split(nodeargs), stdin=PIPE, stdout=PIPE, stderr=PIPE)
+        #popen = Popen(shlex.split(nodeargs), stdin=PIPE, stdout=PIPE, stderr=PIPE)
         print("COMMAND ISSUED " + str(nodeargs))
         logFileWriter('INFO','COMMAND ISSUED:=' + str(nodeargs))
-        popen.wait()
-        (stdout, stderr) = popen.communicate()
+        #popen.wait()
+        #(stdout, stderr) = popen.communicate()
         #print("SHELL Output after create" + str(output))
         ##pks resize CLUSTER-NAME --num-nodes NUMBER-OF-WORKER-NODES
-    except subprocess.CalledProcessError:
+    #except subprocess.CalledProcessError:
         print("Error Occured" + output)
         logFileWriter('WARN','Error Occured' + output)
     return scaleWorkerNodeNumber

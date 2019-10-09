@@ -108,7 +108,7 @@ def pksnodecreate():
         workernodes = eight.split(':')
         presentworkernodeNumber = workernodes[1].strip()
         print(presentworkernodeNumber)
-        scaleWorkerNodeNumber = presentworkernodeNumber + 1
+        scaleWorkerNodeNumber = int(float(presentworkernodeNumber)) + 1
         print(scaleWorkerNodeNumber)
         print("INFO: scaleWorkerNodeNumber:" + str(scaleWorkerNodeNumber))
         logFileWriter('INFO','New Scale Updated Nodes Count=' + str(scaleWorkerNodeNumber))

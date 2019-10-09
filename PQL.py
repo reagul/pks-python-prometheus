@@ -57,7 +57,7 @@ def mainloop():
                 cpufinal = int(round(cpupercent,2) * 100)
                 print("CPU-UTIL % ==" + str(cpufinal))
                 logFileWriter('INFO',"CPU-UTIL % ==" + str(cpufinal))
-                if cpufinal > 85 :
+                if cpufinal > 50 :
                     ##print("CPU util over 75 so sleep for 1mins")
                     ##time.sleep(60)
                     print("INFO: kickoff node creation + Sleep 10 min")
@@ -108,8 +108,8 @@ def pksnodecreate():
         workernodes = eight.split(':')
         presentworkernodeNumber = workernodes[1].strip()
         print(presentworkernodeNumber)
-        scaleWorkerNodeNumber = int(presentworkernodeNumber) + 1
-
+        scaleWorkerNodeNumber = presentworkernodeNumber + 1
+        print(scaleWorkerNodeNumber)
         print("INFO: scaleWorkerNodeNumber:" + str(scaleWorkerNodeNumber))
         logFileWriter('INFO','New Scale Updated Nodes Count=' + str(scaleWorkerNodeNumber))
         if ( int(scaleWorkerNodeNumber) < int(presentworkernodeNumber) ):

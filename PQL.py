@@ -107,7 +107,9 @@ def pksnodecreate():
         ### AUTO adding 1 more node each time THIS loop is called
         workernodes = eight.split(':')
         presentworkernodeNumber = workernodes[1].strip()
+        print(presentworkernodeNumber)
         scaleWorkerNodeNumber = int(presentworkernodeNumber) + 1
+
         print("INFO: scaleWorkerNodeNumber:" + str(scaleWorkerNodeNumber))
         logFileWriter('INFO','New Scale Updated Nodes Count=' + str(scaleWorkerNodeNumber))
         if ( int(scaleWorkerNodeNumber) < int(presentworkernodeNumber) ):

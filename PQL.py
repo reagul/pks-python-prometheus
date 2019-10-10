@@ -108,7 +108,7 @@ def pksnodecreate():
         workernodes = eight.split(':')
         presentworkernodeNumber = workernodes[1].strip()
         print(presentworkernodeNumber)
-        scaleWorkerNodeNumber = int(float(presentworkernodeNumber) + 1
+        scaleWorkerNodeNumber = int(float(presentworkernodeNumber)) + 1
         print(scaleWorkerNodeNumber)
         print("INFO: scaleWorkerNodeNumber:" + str(scaleWorkerNodeNumber))
         logFileWriter('INFO','New Scale Updated Nodes Count=' + str(scaleWorkerNodeNumber))
@@ -127,7 +127,7 @@ def pksnodecreate():
 
     nodeargs = "pks resize my-cluster --num-nodes=" + str(scaleWorkerNodeNumber) + " --non-interactive"
     #nodeargs = ("pks resize my-cluster --num-nodes=3 --non-interactive")
-    try:
+    #try:
 
         #popen = Popen(shlex.split(nodeargs), stdin=PIPE, stdout=PIPE, stderr=PIPE)
         print("COMMAND ISSUED " + str(nodeargs))
@@ -139,7 +139,7 @@ def pksnodecreate():
     #except subprocess.CalledProcessError:
         print("Error Occured" + output)
         logFileWriter('WARN','Error Occured' + output)
-    return scaleWorkerNodeNumber
+    #return scaleWorkerNodeNumber
 
 def logFileCreate():
 
